@@ -30,14 +30,71 @@ class ButtonPage extends StatelessWidget {
                 colorBrightness: Brightness.dark,
                 shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20.0)),
                 child: Text(
-                  'active1',
-                  // style: 
+                  'active',
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 20
+                  )
                 ),
                 onPressed: ()=>{},
               )
               // CrossAxisAlignment
             ],
-          )
+          ),
+        
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: <Widget>[
+              FlatButton(
+                child: Text('flat'),
+                onPressed: ()=>{},
+              ),
+              FlatButton(
+                color: Colors.blue,
+                child: Text('flat'),
+                onPressed: ()=>{},
+              ),
+            ],
+          ),
+
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: <Widget>[
+              OutlineButton(
+                textColor: Colors.red,
+                child: Text("outline"),
+                onPressed: ()=>{},
+              ),
+              OutlineButton(
+                textColor: Colors.red,
+                // padding: EdgeInsetsGeometry(),
+                color: Colors.blue,
+                child: Text("outline"),
+                onPressed: ()=>{},
+              ),
+            ],
+          ),
+
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              IconButton(
+                icon: Icon(Icons.thumb_up),
+                onPressed: ()=>{},
+              ),
+              IconButton(
+                icon: Icon(Icons.headset),
+                color:Colors.red,
+                onPressed: ()=>{},
+              ),
+              IconButton(
+                iconSize: 50,
+                icon: Icon(Icons.home),
+                color:Colors.red,
+                onPressed: ()=>{},
+              )
+            ],
+          ),
         ],
       ),
     );
