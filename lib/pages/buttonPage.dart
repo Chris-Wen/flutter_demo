@@ -5,12 +5,14 @@ class ButtonPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: Text("各种button示例")),
-      body: ListView(
+      body: 
+      ListView(
         children: <Widget>[
+          textRowWidget('RaiseButton'),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             // crossAxisAlignment: CrossAxisAlignment.end,
-            children: <Widget>[
+            children: <Widget>[ 
               RaisedButton( 
                 disabledTextColor: Colors.red,
                 child: Text('normal'), 
@@ -42,6 +44,7 @@ class ButtonPage extends StatelessWidget {
             ],
           ),
         
+          textRowWidget('FlatButton'),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: <Widget>[
@@ -57,17 +60,24 @@ class ButtonPage extends StatelessWidget {
             ],
           ),
 
+          textRowWidget('OutlineButton'),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: <Widget>[
               OutlineButton(
-                textColor: Colors.red,
                 child: Text("outline"),
                 onPressed: ()=>{},
               ),
               OutlineButton(
                 textColor: Colors.red,
-                // padding: EdgeInsetsGeometry(),
+                color: Colors.blue,
+                child: Text("outline"),
+                onPressed: ()=>{},
+              ),
+              OutlineButton(
+                highlightedBorderColor: Colors.red,
+                borderSide: BorderSide(color: Colors.red),
+                textColor: Colors.red,
                 color: Colors.blue,
                 child: Text("outline"),
                 onPressed: ()=>{},
@@ -75,6 +85,8 @@ class ButtonPage extends StatelessWidget {
             ],
           ),
 
+          
+          textRowWidget('IconButton'),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
@@ -95,8 +107,61 @@ class ButtonPage extends StatelessWidget {
               )
             ],
           ),
+
+          
+          textRowWidget('Mixed Button'),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: <Widget>[
+              RaisedButton.icon(
+                shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20.0)),
+                icon: Icon(Icons.send),
+                label: Text('Send'),
+                onPressed: ()=>{},
+              ),
+              OutlineButton.icon(
+                borderSide: BorderSide(color: Colors.red),
+                icon: Icon(Icons.add),
+                label: Text('Add'),
+                onPressed: ()=>{},
+              ),
+              FlatButton.icon(
+                color: Colors.blue,
+                colorBrightness: Brightness.dark,
+                icon: Icon(Icons.delete_forever),
+                label: Text('DEL'),
+                onPressed: ()=>{},
+              )
+            ],
+          ),
+  
+          // textRowWidget('Mixed Button'),
+
         ],
       ),
     );
   }
+}
+
+
+//单行文本组件封装
+Row textRowWidget(String text) {
+  return Row(
+    children: <Widget>[
+      Text(
+        text,
+        overflow: TextOverflow.ellipsis,
+        textScaleFactor: 1.2,
+        textDirection: TextDirection.ltr,
+        
+        style: TextStyle(
+          fontWeight: FontWeight.w700,
+          letterSpacing: 0.5,
+          wordSpacing: 10,
+          color: Colors.black,
+          decoration: TextDecoration.underline
+        ),
+      ),
+    ],
+  );
 }
